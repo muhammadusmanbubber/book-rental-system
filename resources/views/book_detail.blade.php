@@ -17,26 +17,27 @@ session()->get('id');
 <body>
     <div class="container" style="margin-top: 30px;">
         <div class="row">
-            <div class="col-lg-12 rounded bg-light rounded"><h3
+            <div class="col-lg-12 rounded bg-light rounded">
+                <h3
                     style="text-align: center; margin-top:10px; font-weight: 800; color: blue; font-family: Georgia, 'Times New Roman', Times, serif;">
                     Bood Details</h3>
             </div>
         </div>
     </div>
-                        {{-- ===Detail Container==== --}}
+    {{-- ===Detail Container==== --}}
 
     <div class="container">
         <div class="row">
             @if (session()->has('success'))
-            <div class="alert alert-success" role="alert">
-                <p>{{ session()->get('success') }}</p>
-            </div>
-        @endif
-        @if (session()->has('error'))
-            <div class="alert alert-danger" role="alert">
-                <p>{{ session()->get('error') }}</p>
-            </div>
-        @endif
+                <div class="alert alert-success" role="alert">
+                    <p>{{ session()->get('success') }}</p>
+                </div>
+            @endif
+            @if (session()->has('error'))
+                <div class="alert alert-danger" role="alert">
+                    <p>{{ session()->get('error') }}</p>
+                </div>
+            @endif
             <div class="card">
                 <div class="col-lg-4">
                     <img src="{{ asset('books/' . $show_details->image) }}" class="card-img-top" alt="Book-image"
@@ -61,4 +62,5 @@ session()->get('id');
         </div>
     </div>
 </body>
+
 </html>

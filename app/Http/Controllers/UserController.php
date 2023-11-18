@@ -23,10 +23,12 @@ class UserController extends Controller
         Auth::logout();
         return redirect('user_login');
     }
+
     public function user_login()
     {
         return view('user_login');
     }
+
     public function rented()
     {
         $data = Rental::whereNotNull('return_date')
@@ -34,17 +36,26 @@ class UserController extends Controller
             ->get();
         return view('rented', compact('data'));
     }
+
     public function home(Request $request)
     {
         $show_books = Book::latest()->paginate(6);
         return view('home', compact('show_books'));
     }
 
-    // public function book_details($id){
-    //     $id=$request->session()->get('id');
-    //     $show_detail=Book::find($id);
-    //     return view('book_detail',compact('show_detail'));
-    // }
+    public function order_book()
+    {
+        return view('order_book');
+    }
+
+    public function search_books(Request $request)
+    {
+        $search = $request->input('search');
+        $show_books = DB::table('books')
+            ->where('book_name', 'like', '%' . $search . '%')
+            ->paginate(3);
+        return view('home', compact('show_books'));
+    }
 
     // ===========================Signup Section===============================
 
@@ -60,8 +71,6 @@ class UserController extends Controller
         $signup->name = $request->name;
         $signup->email = $request->email;
         $signup->password = Hash::make($request->password);
-        // 'password' => Hash::make($data['password']),
-        // ( insert Image into database )
         $imageName = time() . '.' . $request->image->extension();
         $request->image->move(public_path('upload'), $imageName);
         $signup->image = $imageName;
@@ -69,12 +78,11 @@ class UserController extends Controller
         return redirect('user_login')->with('success', 'Signup Successfuly!!');
     }
 
-    // ===========================User Login Section===============================
+    // ===========================User Login Section=============================
 
     public function user_login_qry(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        // dd($request->all());
         if (Auth::attempt($credentials)) {
             session()->put('id', auth()->user()->id);
             return redirect('/home');
@@ -83,7 +91,7 @@ class UserController extends Controller
         return back()->with('error', 'Email or Password are incorrect');
     }
 
-    // ===========================Show Data in User Profile===============================
+    // ===========================Show Data in User Profile=========================
 
     public function profile(Request $request)
     {
@@ -91,7 +99,7 @@ class UserController extends Controller
         $show = User::find($id);
         return view('profile', compact('show'));
     }
-    // ===========================Update Data in User Profile===============================
+    // ===========================Update Data in User Profile=======================
 
     public function edit_profile($id)
     {
@@ -112,9 +120,4 @@ class UserController extends Controller
         return redirect('profile')->with('success', 'Update User Profile Successfuly!!');
     }
 
-    public function order_book()
-    {
-        // $show_user_data=user::find($id);
-        return view('order_book');
-    }
 }

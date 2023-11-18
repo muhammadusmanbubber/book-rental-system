@@ -14,12 +14,12 @@ use App\Http\Controllers\RentalController;
 Route::get('/rentals/book/{book_id}', [RentalController::class, 'store'])->name('rentals.book');
 
 Route::controller(UserController::class)->group(function () {
-
     Route::get('/', 'index');          
     Route::get('user_login', 'user_login');     
     Route::post('signup','signup');     
     Route::post('user_login_qry', 'user_login_qry');
     Route::get('home', 'home');
+    Route::post('search_books', 'search_books');
     Route::get('rented', 'rented');
     Route::get('order/{id}','order_book');
     Route::get('profile', 'profile');
@@ -40,13 +40,10 @@ Route::controller(AdminController::class)->group(function (){
     Route::post('update_book_data/{id}', 'update_book');
     Route::get('logout1', 'logout1'); 
     Route::post('update_by_admin/{id}', 'update');
-    Route::get('trash', 'trash');
-    Route::get('trash_data', 'trash');
-    Route::get('forceDelete/{id}', 'forceDelete');
-    Route::get('restore/{id}', 'restore');
     Route::get('all_books','all_books');
     Route::get('rented_books','rented_books');
-
+    Route::get('delete_rented_book/{id}','delete_rented_book');
+    Route::post('search_all_books','search_all_books');
 });
 
 Route::controller(BookController::class)->group(function (){
@@ -55,10 +52,4 @@ Route::controller(BookController::class)->group(function (){
     Route::get('book_details/{id}', 'book_details');
     Route::get('order/{id}', 'order_details');
     Route::post('rented_book/{id}','order_book_rent');
-    // Route::post('rented_book/{id}','order_book_rent');
-
-});
-
-Route::controller(RentedController::class)->group(function (){
-
 });

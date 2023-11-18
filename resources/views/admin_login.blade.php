@@ -71,7 +71,7 @@
         </div>
     </div>
     <hr>
-    
+
     {{-- --footer section-- --}}
     <footer class="bg-light">
         <div class="container py-4">

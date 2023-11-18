@@ -52,9 +52,9 @@
                             <input type="search" name="search" placeholder="Search here">
                             <input type="submit" name="submit" value="Search">
                         </form>
-                    <li><a class="nav-link scrollto active" href="home">Home</a></li>
+                    <li><a class="nav-link scrollto" href="home">Home</a></li>
                     <li><a class="nav-link scrollto" href="profile">Profile</a></li>
-                    <li><a class="nav-link scrollto" href="rented">Rented Books</a></li>
+                    <li><a class="nav-link scrollto active" href="rented">Rented Books</a></li>
                     <li><a class="nav-link scrollto" href="logout">Logout</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -93,12 +93,13 @@
                         <td>{{ $shows->user->email }}</td>
                         <td>{{ $shows->book->book_name }}</td>
                         <td>{{ $shows->book->auther_name }}</td>
-                        <td>{{ \Carbon\Carbon::parse($shows->rental_date)->format('d F Y, g:i A')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($shows->return_date)->format('d F Y, g:i A')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($shows->rental_date)->format('d F Y, g:i A') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($shows->return_date)->format('d F Y, g:i A') }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </body>
+
 </html>

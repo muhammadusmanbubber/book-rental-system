@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Signup Page</title>
+    <title>Update Book Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -23,10 +23,10 @@
         </div>
     </div>
     <div class="container" style="margin-top: 40px;">
-        <div class="row">
+        <div class="row" style="padding-left:30%; padding-right:30%;">
             <div class="col-lg-12">
 
-                <form action="{{url('update_book_data',$update->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('update_book_data', $update->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="Book_Name">Book Name</label>
@@ -37,7 +37,8 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Auther Name</label>
-                        <input type="text" class="form-control" name="auther_name" value="{{ $update->auther_name }}">
+                        <input type="text" class="form-control" name="auther_name"
+                            value="{{ $update->auther_name }}">
                         @if ($errors->has('auther_name'))
                             <span class="text-danger">{{ $errors->first('auther_name') }}</span>
                         @endif

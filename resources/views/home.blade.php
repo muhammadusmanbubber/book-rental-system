@@ -36,6 +36,13 @@ session()->get('id');
             </div>
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
+                    <li class="nav-link">
+                        <form action="search_books" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          <input type="search" name="search" placeholder="Search here">
+                          <input type="submit" name="submit" value="Search">
+                        </form>
+                      </li>
                     <li><a class="nav-link scrollto active" href="home">Home</a></li>
                     <li><a class="nav-link scrollto" href="profile">Profile</a></li>
                     <li><a class="nav-link scrollto" href="rented">Rented Books</a></li>

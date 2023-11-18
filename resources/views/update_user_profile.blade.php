@@ -22,11 +22,11 @@
             </div>
         </div>
     </div>
+    
     <div class="container" style="margin-top: 40px;">
         <div class="row">
             <div class="col-lg-12">
-
-                <form action="{{ url('update',$data->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('update', $data->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="username">User Name</label>
@@ -61,7 +61,6 @@
             </div>
         </div>
     </div>
-
     </div>
 </body>
 
