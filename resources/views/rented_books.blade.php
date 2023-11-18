@@ -98,9 +98,6 @@
           @endforeach
         </tbody>
         </table>
-        {{-- <div class="d-flex">
-          {{$show->links()}}
-        </div> --}}
     </div>
     </body>
     </html>
